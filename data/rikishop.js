@@ -528,21 +528,40 @@ function generateProductActionButtons(currentPrice) {
         e.preventDefault();
         let waMessage;
         const targetPhoneNumber = getPhoneNumberForProduct(product, serviceType);
-        
+        const formattedPrice = formatRupiah(currentPrice); // Ini akan otomatis menjadi RM jika Anda sudah mengikuti panduan saya sebelumnya
+        let additionalInfo = '';
+
         if (serviceType === 'Logo') {
             const selectedImages = document.querySelectorAll('#stockImageSlider .image-slide-wrapper.selected');
             if (selectedImages.length === 0) {
-                showToastNotification('Pilih minimal satu desain logo.', 'fa-exclamation-circle');
+                showToastNotification('Sila pilih sekurang-kurangnya satu reka bentuk logo.', 'fa-exclamation-circle');
                 return;
             }
             let imagesText = '';
             selectedImages.forEach((imgWrapper, index) => {
                 imagesText += `\n${index + 1}. ${imgWrapper.dataset.imageUrl}`;
             });
-            waMessage = `Halo Kak, saya tertarik memesan Logo:\n\nProduk: *${product.nama}*\nHarga: *${formatRupiah(currentPrice)}*\n\nDesain yang saya pilih:${imagesText}\n\nMohon info selanjutnya. Terima kasih! 🙏`;
-        } else {
-            waMessage = `Halo Kak, saya tertarik memesan produk:\n\nProduk: *${product.nama}*\nHarga: *${formatRupiah(currentPrice)}*\n\nMohon info selanjutnya. Terima kasih! 🙏`;
+            additionalInfo = `🖼️  *Reka Bentuk Dipilih:*${imagesText}\n`;
         }
+        
+        waMessage = `Salam Tuan, Saya berminat untuk membuat pesanan berikut:
+
+══════════
+🛍️  *MAKLUMAT PESANAN*
+══════════
+
+🏷️  *Kategori:*
+${serviceType}
+
+📦  *Produk:*
+${product.nama}
+
+${additionalInfo}
+💰  *Harga:*
+${formattedPrice}
+
+Terima kasih! Saya menantikan maklum balas Tuan. ✨`;
+
         window.open(`https://wa.me/${targetPhoneNumber}?text=${encodeURIComponent(waMessage)}`, "_blank");
     });
     detailProductActions.appendChild(buyNowLink);
@@ -872,22 +891,41 @@ if (promoApplyBtn) {
 if (checkoutButton) {
     checkoutButton.addEventListener('click', () => {
         if (cart.length === 0) return;
+        
         let itemsText = '';
-        let subtotalFromOriginal = 0;
-        cart.forEach((item, i) => {
-            itemsText += `*${i + 1}. ${item.name}*\n   (${formatRupiah(item.price)}) x ${item.quantity}\n`;
-            subtotalFromOriginal += item.originalPrice * item.quantity;
+        cart.forEach((item, index) => {
+            const category = findCategoryOfProduct(item.id) || 'Lain-lain';
+            const formattedPrice = formatRupiah(item.price);
+            itemsText += `*${index + 1}. ${item.name}*\n`;
+            itemsText += `   - Kategori: ${category}\n`;
+            itemsText += `   - Harga: ${formattedPrice} x ${item.quantity}\n\n`;
         });
+
+        let subtotalFromOriginal = cart.reduce((sum, item) => sum + (item.originalPrice * item.quantity), 0);
         let promoText = '';
         let finalTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
         if (cartPagePromo) {
             const discountAmount = subtotalFromOriginal * (cartPagePromo.percentage / 100);
             finalTotal = subtotalFromOriginal - discountAmount;
-            promoText = `Kode Promo (*${cartPagePromo.code.toUpperCase()}*): -${formatRupiah(discountAmount)}\n--------------------\n`;
+            promoText = `🎟️  *Diskaun (${cartPagePromo.code.toUpperCase()}):* -${formatRupiah(discountAmount)}\n`;
         }
-        let message = `Halo Kak, saya ingin mengonfirmasi pesanan dari keranjang:\n\n--- PESANAN ---\n${itemsText}--------------------\n*Subtotal: ${formatRupiah(subtotalFromOriginal)}*\n${promoText}*Total Akhir: ${formatRupiah(finalTotal)}*\n\nMohon konfirmasinya. Terima kasih! 🙏`;
+        
+        const message = `Salam Tuan, Saya ingin mengesahkan pesanan dari troli beli-belah saya:
+
+══════════
+🛒  *SENARAI PESANAN*
+══════════
+
+${itemsText}--------------------------------
+
+💵  *Subtotal:* ${formatRupiah(subtotalFromOriginal)}
+${promoText}💰  *Jumlah Keseluruhan:* *${formatRupiah(finalTotal)}*
+
+Terima kasih! Saya menantikan maklum balas Tuan. ✨`;
+
         const checkoutNumber = siteSettings.globalPhoneNumber || WA_ADMIN_NUMBER;
-        window.open(`https://wa.me/${checkoutNumber}?text=${encodeURIComponent(message)}`, '_blank');
+        window.open(`https.wa.me/${checkoutNumber}?text=${encodeURIComponent(message)}`, '_blank');
     });
 }
 if (openCartBtn) openCartBtn.addEventListener('click', () => { showPage('cart-page'); renderCart(); });
