@@ -116,6 +116,14 @@ let currentLightboxTarget = null;
 const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-rikishop';
 let isHandlingPopState = false;
 
+function sanitizeAndFormatText(text) {
+    if (!text) return '';
+    const escapedText = text.replace(/&/g, "&amp;")
+                           .replace(/</g, "&lt;")
+                           .replace(/>/g, "&gt;");
+    return escapedText.replace(/\|\|/g, '<br>');
+}
+
 function showCustomAlert(title, message) {
     if (!customAlertModal) return;
     alertTitle.textContent = title;
@@ -375,7 +383,7 @@ function showProductDetail(product, serviceType) {
     
     updateProductPriceDisplay();
     
-    detailProductDescriptionContent.innerHTML = product.deskripsiPanjang ? product.deskripsiPanjang.replace(/\|\|/g, '<br>') : 'Tidak ada deskripsi.';
+    detailProductDescriptionContent.innerHTML = sanitizeAndFormatText(product.deskripsiPanjang) || 'Tidak ada deskripsi.';
 
     const existingMenuBtn = document.querySelector('.check-menu-btn');
     if (existingMenuBtn) {
