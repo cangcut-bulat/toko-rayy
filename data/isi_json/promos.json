@@ -4,7 +4,7 @@
         "percentage": 90,
         "expires": "2025-10-09T02:30:00.000Z",
         "maxUses": 10,
-        "uses": 1,
+        "uses": 2,
         "allowedCategories": [
             "IPHONE",
             "ANDROID",
