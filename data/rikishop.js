@@ -305,15 +305,11 @@ function renderServiceGrid() {
     serviceGrid.innerHTML = '';
     const categoryMetadata = siteSettings.categoryMetadata || {};
     const fallbackIcons = {
-        'Panel': 'image/panel.png',
-        'VPS': 'image/vps.png',
-        'Script': 'image/script.png',
-        'Jasa': 'image/jasa.png',
-        'murid': 'image/murid.png',
-        'Sewa Bot': 'image/bot.png',
-        'Stock Akun': 'image/stock.png',
-        'Suntik Sosmed': 'image/suntik.png',
-        'Logo': 'https://img.icons8.com/fluency/48/color-palette.png'
+        'ANDROID': 'image/panelff.jpg',
+        'XiT AIMLOCK ANDROID': 'image/panelff.jpg',
+        'EZ HEAD ANDROID': 'image/panelff.jpg',
+        'AIM HEAD ANDROID': 'image/panelff.jpg',
+        'iNJECTOR ANDROID': 'image/panelff.jpg'
     };
     for (const categoryName in products) {
         const placeholderUrl = 'https://via.placeholder.com/45/EFEFEF/AFAFAF?text=ICON';
