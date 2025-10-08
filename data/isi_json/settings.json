@@ -1,0 +1,34 @@
+{
+    "globalPhoneNumber": "6285771555374",
+    "categoryPhoneNumbers": {
+        "Panel": "",
+        "VPS": "",
+        "Script": "",
+        "Jasa": "",
+        "murid": "",
+        "Sewa Bot": "",
+        "Stock Akun": "",
+        "Logo": "",
+        "Suntik Sosmed": ""
+    },
+    "apiKeyPurchaseNumber": "6285819066475",
+    "apiKeyPrices": [
+        {
+            "tier": "Paket 1 bulan",
+            "price": 15000,
+            "discountPrice": null,
+            "discountEndDate": null
+        },
+        {
+            "tier": "Paket permanen",
+            "price": 20000,
+            "discountPrice": null,
+            "discountEndDate": null
+        }
+    ],
+    "categoryMetadata": {
+        "Logo bku": {
+            "icon": "https://img1.pixhost.to/images/8532/638474942_by_rikishopreal.jpg"
+        }
+    }
+}
