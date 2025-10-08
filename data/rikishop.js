@@ -540,7 +540,7 @@ function generateProductActionButtons(currentPrice) {
             additionalInfo = `🖼️  *Reka Bentuk Dipilih:*${imagesText}\n`;
         }
         
-        waMessage = `Salam Tuan, Saya berminat untuk membuat pesanan berikut:
+        waMessage = `aslm hi, saya ingin membuat pesanan berikut:
 
 ══════════
 🛍️  *MAKLUMAT PESANAN*
@@ -551,12 +551,11 @@ ${serviceType}
 
 📦  *Produk:*
 ${product.nama}
-
 ${additionalInfo}
 💰  *Harga:*
 ${formattedPrice}
 
-Terima kasih! Saya menantikan maklum balas Tuan. ✨`;
+harap dapat respon secepat mungkin.`;
 
         window.open(`https://wa.me/${targetPhoneNumber}?text=${encodeURIComponent(waMessage)}`, "_blank");
     });
@@ -717,24 +716,41 @@ function findCategoryOfProduct(productId) {
 function getAiResponse(input) {
     const lowerInput = input.toLowerCase();
     const responses = {
-        'Assalamualaikum': "Wa'alaikumsalam warahmatullahi wabarakatuh. Ada apa-apa yang boleh saya bantu?",
-        'halo': "Hai! Adakah terdapat apa-apa yang boleh saya bantu mengenai perkhidmatan di Rikishop?",
-        'terima kasih': "anda dialu-alukan! Jika anda mempunyai sebarang soalan lain, sila jangan teragak-agak untuk bertanya lagi.",
-        'siapa kamu': `Nama saya <b>Toko Riki AI</b>, pembantu maya yang sedia membantu anda di sini.`,
-        'pembuat': `Saya dibangunkan oleh <b>${CREATOR_USERNAME}</b> untuk membantu pelanggan`,
-        'toko apa ini': `<b>Rikishop</b> ialah platform penyedia perkhidmatan digital paling komprehensif.`,
-        'aman': `Sudah tentu! Keselamatan dan kepercayaan pelanggan adalah keutamaan kami.`,
-        'testimoni': `Sudah tentu, anda boleh melihat testimoni di: <a href="${TESTIMONI_LINK}" target="_blank">${TESTIMONI_LINK}</a>`,
-        'produk': `Kami menyediakan: <b>${Object.keys(products).join(', ')}</b>.`,
-        'harga': `Untuk maklumat harga terkini, sila pilih kategori di Laman Utama..`,
-        'kontak': `Anda boleh menghubungi pentadbir melalui WhatsApp di <a href="https://wa.me/${WA_ADMIN_NUMBER}" target="_blank">${WA_ADMIN_NUMBER}</a>.`,
-        'saluran': `Sertai Saluran WhatsApp kami di: <a href="${SALURAN_WA_LINK}" target="_blank">Sertai Saluran WA</a>.`
+        // Sedia ada, tiada perubahan
+        'assalamualaikum': "Wa'alaikumsalam warahmatullahi wabarakatuh. Ada apa yang boleh saya bantu?",
+        'halo': "Hai! Ada apa-apa yang boleh saya bantu berkenaan perkhidmatan di RAYY SETTING 7 - RS7?",
+        
+        // Diperbaiki untuk bunyi lebih semula jadi
+        'terima kasih': "Sama-sama! Jika Tuan ada soalan lain, jangan ragu-ragu untuk bertanya lagi ya.",
+        
+        // Kata kunci ditukar dari Bahasa Indonesia ke Bahasa Malaysia
+        'siapa awak': `Nama saya <b>Rayy AI</b>, pembantu maya yang sedia membantu anda di sini.`,
+        'siapa yang buat': `Saya dibangunkan oleh <b>${CREATOR_USERNAME}</b> untuk membantu para pelanggan.`,
+        'ini kedai apa': `<b>RAYY SETTING 7 - RS7</b> ialah platform penyedia perkhidmatan digital yang paling komprehensif.`,
+        
+        // Respons diperbaiki sedikit
+        'aman': `Sudah tentu! Keselamatan dan kepercayaan pelanggan adalah keutamaan utama kami.`,
+        'feedback': `Pasti, Tuan boleh melihat maklum balas pelanggan kami di sini: <a href="${TESTIMONI_LINK}" target="_blank">${TESTIMONI_LINK}</a>`,
+        
+        // Sedia ada, tiada perubahan
+        'produk': `Kami menyediakan pelbagai perkhidmatan seperti: <b>${Object.keys(products).join(', ')}</b>.`,
+        
+        // Respons diperbaiki
+        'harga': `Untuk maklumat harga yang terkini, sila lihat pada kategori produk di laman utama kami.`,
+        
+        // Kata kunci & Respons ditukar/diperbaiki
+        'macam mana nak hubungi': `Tuan boleh menghubungi admin melalui WhatsApp di <a href="https://wa.me/${WA_ADMIN_NUMBER}" target="_blank">${WA_ADMIN_NUMBER}</a>.`,
+        'saluran': `Jom sertai Saluran WhatsApp kami di: <a href="${SALURAN_WA_LINK}" target="_blank">Sertai Saluran WA</a>.`
     };
+
     for (const key in responses) {
         if (lowerInput.includes(key)) return responses[key];
     }
-    return `Maaf, saya kurang faham. Cuba tanya tentang: Keselamatan, Produk, Harga atau Hubungan Pentadbir.`;
+    
+    // Mesej fallback juga ditukar ke Bahasa Malaysia yang lebih baik
+    return `Maaf, saya kurang faham. Boleh cuba tanya soalan lain? Contohnya tentang: Produk, Harga, atau cara Hubungi Admin.`;
 }
+
 
 async function handleSendChatMessagePage() {
     const userInput = chatAiInputPage.value.trim();
@@ -907,7 +923,7 @@ if (checkoutButton) {
             promoText = `🎟️  *Diskaun (${cartPagePromo.code.toUpperCase()}):* -${formatRupiah(discountAmount)}\n`;
         }
         
-        const message = `Salam Tuan, Saya ingin mengesahkan pesanan dari troli beli-belah saya:
+        const message = `aslm hi, saya ingin membuat pesanan berikut:
 
 ══════════
 🛒  *SENARAI PESANAN*
@@ -918,7 +934,7 @@ ${itemsText}--------------------------------
 💵  *Subtotal:* ${formatRupiah(subtotalFromOriginal)}
 ${promoText}💰  *Jumlah Keseluruhan:* *${formatRupiah(finalTotal)}*
 
-Terima kasih! Saya menantikan maklum balas Tuan. ✨`;
+harap dapat respon secepat mungkin.`;
 
         const checkoutNumber = siteSettings.globalPhoneNumber || WA_ADMIN_NUMBER;
         window.open(`https.wa.me/${checkoutNumber}?text=${encodeURIComponent(message)}`, '_blank');
