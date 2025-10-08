@@ -1,6 +1,17 @@
 {
     "IPHONE": [
         {
+            "id": 3,
+            "nama": "HEADTRICK V2",
+            "harga": 10,
+            "hargaAsli": 10,
+            "deskripsiPanjang": "#ALL FILE/SET SUPPORT SEMUA JENIS iPHONE/ANDROID DAN ALL FILE NEW UPDATE ||  || #SEMAKIN MAHAL HARGA FILE SEMAKIN GACOR AIM KALIAN !! ||  || #ANTI GIMMICK !!",
+            "createdAt": "2025-10-08T04:25:23.184Z",
+            "nomorWA": "",
+            "images": [],
+            "menuContent": ""
+        },
+        {
             "id": 2,
             "nama": "AIM DRAG V1",
             "harga": 25,
