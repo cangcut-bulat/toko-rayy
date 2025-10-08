@@ -1,18 +1,1 @@
-{
-    "RAYYSETTING7": {
-        "code": "RAYYSETTING7",
-        "percentage": 90,
-        "expires": "2025-10-09T02:30:00.000Z",
-        "maxUses": 10,
-        "uses": 2,
-        "allowedCategories": [
-            "IPHONE",
-            "ANDROID",
-            "XiT AIMLOCK ANDROID",
-            "EZ HEAD ANDROID",
-            "AIM HEAD ANDROID",
-            "iNJECTOR ANDROID"
-        ],
-        "allowedProductId": null
-    }
-}
+{}
