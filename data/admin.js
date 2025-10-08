@@ -670,8 +670,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function formatRupiah(number) {
-        return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(number);
-    }
+    return new Intl.NumberFormat('ms-MY', { style: 'currency', currency: 'MYR' }).format(number);
+}
 
     function setupManageActions(category, productsInCat) {
         const editModal = document.getElementById('editProductModal');

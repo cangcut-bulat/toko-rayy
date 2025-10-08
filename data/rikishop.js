@@ -1,3 +1,4 @@
+
 let youtubePlayer;
 let isYouTubeApiReady = false;
 function onYouTubeIframeAPIReady() { isYouTubeApiReady = true; }
@@ -246,7 +247,8 @@ function showPage(pageId) {
 }
 
 function formatRupiah(number) {
-    return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(number);
+    // 'ms-MY' adalah kode untuk Malaysia, dan 'MYR' adalah kode untuk Ringgit
+    return new Intl.NumberFormat('ms-MY', { style: 'currency', currency: 'MYR' }).format(number);
 }
 
 function getPhoneNumberForProduct(product, serviceType) {
@@ -988,7 +990,7 @@ document.addEventListener('firebaseReady', () => {
     setupFirebaseVisitorCounter();
 });
 document.addEventListener('firebaseFailed', () => {
-    if(visitorCountDisplay) visitorCountDisplay.querySelector('.count').textContent = 'R/S';
+    if(visitorCountDisplay) visitorCountDisplay.querySelector('.count').textContent = 'R/Y';
 });
 
 window.addEventListener('popstate', function(event) {
