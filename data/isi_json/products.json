@@ -1,3 +1,15 @@
 {
-    "IPHONE": []
+    "IPHONE": [
+        {
+            "id": 1,
+            "nama": "AIM DRAG V2",
+            "harga": 35,
+            "hargaAsli": 35,
+            "deskripsiPanjang": "#ALL FILE/SET SUPPORT SEMUA JENIS iPHONE/ANDROID DAN ALL FILE NEW UPDATE ||  || #SEMAKIN MAHAL HARGA FILE SEMAKIN GACOR AIM KALIAN !! ||  || #ANTI GIMMICK !!",
+            "createdAt": "2025-10-08T04:03:25.909Z",
+            "nomorWA": "",
+            "images": [],
+            "menuContent": ""
+        }
+    ]
 }
